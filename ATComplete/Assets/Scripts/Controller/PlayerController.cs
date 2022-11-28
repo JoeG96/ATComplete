@@ -92,6 +92,8 @@ public class PlayerController: MonoBehaviour
     [SerializeField] private float pickupRange;
     private Rigidbody currentObject;
 
+    private LevelStatusChecker levelChecker;
+
     private void Awake()
     {
         instance = this;
@@ -100,6 +102,7 @@ public class PlayerController: MonoBehaviour
         playerCamera = GetComponentInChildren<Camera>();
         defaultYPos = playerCamera.transform.localPosition.y;
         pickupTarget = GameObject.Find("Pickup Point").GetComponent<Transform>();
+        levelChecker = GameObject.Find("GameManager").GetComponent<LevelStatusChecker>();
     }
 
     void Update()
@@ -113,11 +116,7 @@ public class PlayerController: MonoBehaviour
         InteractionInput();
         ApplyFinalMovements();
         PhysicsPickup();
-/*        if (controls.Player.Y.triggered)
-        {
-            Debug.Log("Interact Triggered");
-            SpawnPrefab();
-        }*/
+        SpawnPrefab();
 
         //DebugStuff();
 
@@ -244,18 +243,18 @@ public class PlayerController: MonoBehaviour
         }
     }
 
-/*    private void SpawnPrefab()
+    private void SpawnPrefab()
     {
-        Debug.Log("Spawn Prefab Method");
-        RaycastHit hit;
-        Ray ray = playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0.5f));
+        //Debug.Log("Spawn Prefab Method");
+        //RaycastHit hit;
+        //Ray ray = playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0.5f));
 
-        if (Physics.Raycast(ray, out hit, 100.0f))
+        if (controls.Player.Y.triggered)
         {
-            Instantiate(prefab, hit.point, Quaternion.identity);
-            Debug.Log("Prefab Spawned");
+            levelChecker.SpawnPrefab();
+            //if (Physics.Raycast(ray, out hit, 100.0f)){}
         }
-    }*/
+    }
 
     private void PhysicsPickup()
     {
