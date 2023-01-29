@@ -9,67 +9,103 @@ using UnityEngine.UIElements;
 public class MyCustomEditor : Editor
 {
     #region Serialized Properties
-    SerializedProperty startingPoint;
-    SerializedProperty endingPoint;
+
+    SerializedProperty levelPossible;
+
     SerializedProperty jumpHeight;
+    
     SerializedProperty boxHeight;
     SerializedProperty numberOfBoxes;
     SerializedProperty boxPrefab;
+    
     SerializedProperty helperObstacles;
     SerializedProperty obstacleHeight;
+    SerializedProperty noHelpObstacles;
+    SerializedProperty noHelpObstacleHeight;
+    
     SerializedProperty totalBoxHeight;
     SerializedProperty totalReachHeight;
     SerializedProperty startToEndDistance;
     SerializedProperty spawnPoint;
-    SerializedProperty isMoving;
-    SerializedProperty startPlatformHeight;
-    SerializedProperty minPlatformHeight;
-    SerializedProperty maxPlatformHeight;
-    SerializedProperty platformMovingSpeed;
 
-    bool isMovingGroup, functionsGroup = false;
+    SerializedProperty startEndPointsList;
+    SerializedProperty startPlatform;
+    SerializedProperty endPlatform;
+
+    SerializedProperty platformSpaceDistance;
+
+
+    bool functionsGroup, platformsGroup = false;
     #endregion
 
     private void OnEnable()
     {
-        startingPoint = serializedObject.FindProperty("startingPoint");
-        endingPoint = serializedObject.FindProperty("endingPoint");
+        levelPossible = serializedObject.FindProperty("levelPossible");
+
         jumpHeight = serializedObject.FindProperty("jumpHeight");
+        
         boxHeight = serializedObject.FindProperty("boxHeight");
         numberOfBoxes = serializedObject.FindProperty("numberOfBoxes");
         boxPrefab = serializedObject.FindProperty("boxPrefab");
+        
         helperObstacles = serializedObject.FindProperty("helperObstacles");
         obstacleHeight = serializedObject.FindProperty("obstacleHeight");
+        noHelpObstacles = serializedObject.FindProperty("noHelpObstacles");
+        noHelpObstacleHeight = serializedObject.FindProperty("noHelpObstacleHeight");
+        
         totalBoxHeight = serializedObject.FindProperty("totalBoxHeight");
         totalReachHeight = serializedObject.FindProperty("totalReachHeight");
         startToEndDistance = serializedObject.FindProperty("startToEndDistance");
         spawnPoint = serializedObject.FindProperty("spawnPoint");
-        isMoving = serializedObject.FindProperty("isMoving");
-        startPlatformHeight = serializedObject.FindProperty("startPlatformHeight");
-        minPlatformHeight = serializedObject.FindProperty("minPlatformHeight");
-        maxPlatformHeight = serializedObject.FindProperty("maxPlatformHeight");
-        platformMovingSpeed = serializedObject.FindProperty("platformMovingSpeed");
+        
+        startEndPointsList = serializedObject.FindProperty("startEndPointsList");
+        startPlatform = serializedObject.FindProperty("startPlatform");
+        endPlatform = serializedObject.FindProperty("endPlatform");
+
+        platformSpaceDistance = serializedObject.FindProperty("platformSpaceDistance");
     }
 
     public override void OnInspectorGUI()
     {
         serializedObject.Update();
+
+        var style = new GUIStyle(GUI.skin.label);
+        style.alignment = TextAnchor.MiddleCenter;
+        style.fontStyle = FontStyle.Bold;
+
+        var levelStyle = new GUIStyle();
+        levelStyle.normal.textColor = Color.red;
+
         LevelStatusChecker levelStatusChecker = (LevelStatusChecker)target;
-        
-        EditorGUILayout.PropertyField(startingPoint);
-        EditorGUILayout.PropertyField(endingPoint);
-        EditorGUILayout.LabelField(" Heights ", EditorStyles.boldLabel);
+
+        EditorGUILayout.PropertyField(levelPossible);
+
+        platformsGroup = EditorGUILayout.BeginFoldoutHeaderGroup(platformsGroup, "Platforms");
+        if (platformsGroup)
+        {
+            EditorGUILayout.PropertyField(startPlatform);
+            EditorGUILayout.PropertyField(endPlatform);
+        }
+        EditorGUILayout.EndFoldoutHeaderGroup();
+
+        EditorGUILayout.PropertyField(startEndPointsList);
+        EditorGUILayout.PropertyField(platformSpaceDistance);
+
+        EditorGUILayout.LabelField(" Heights ", style,GUILayout.ExpandWidth(true));
         EditorGUILayout.PropertyField(jumpHeight);
-        
         EditorGUILayout.PropertyField(boxHeight);
-        EditorGUILayout.PropertyField(numberOfBoxes);
-        EditorGUILayout.PropertyField(boxPrefab);
-         
-        EditorGUILayout.LabelField("  Obstacles ", EditorStyles.boldLabel);
-        EditorGUILayout.PropertyField(helperObstacles);
-        EditorGUILayout.PropertyField(obstacleHeight);
         EditorGUILayout.PropertyField(totalReachHeight);
 
+        EditorGUILayout.PropertyField(numberOfBoxes);
+        EditorGUILayout.PropertyField(boxPrefab);
+        
+        EditorGUILayout.LabelField(" Obstacles ", style, GUILayout.ExpandWidth(true));
+        EditorGUILayout.PropertyField(helperObstacles);
+        EditorGUILayout.PropertyField(noHelpObstacles);
+        EditorGUILayout.PropertyField(obstacleHeight);
+        EditorGUILayout.PropertyField(noHelpObstacleHeight);
+
+        
         functionsGroup = EditorGUILayout.BeginFoldoutHeaderGroup(functionsGroup, "Functions");
         if (functionsGroup)
         {
@@ -82,69 +118,11 @@ public class MyCustomEditor : Editor
             if (GUILayout.Button("Set To Exact Height Required"))
             { levelStatusChecker.SetToExactBoxes(); }
         }
-        EditorGUILayout.EndFoldoutHeaderGroup();
-
-        isMovingGroup = EditorGUILayout.BeginFoldoutHeaderGroup(isMovingGroup, "Movement");
-            if (isMovingGroup)
-            {
-                EditorGUILayout.PropertyField(isMoving);
-                if(levelStatusChecker.isMoving)
-                {
-                    EditorGUILayout.PropertyField(startPlatformHeight);
-                    EditorGUILayout.PropertyField(maxPlatformHeight);
-                    EditorGUILayout.PropertyField(minPlatformHeight);
-                    EditorGUILayout.PropertyField(platformMovingSpeed);
-                }
-            }
-        EditorGUILayout.EndFoldoutHeaderGroup();
-
+        EditorGUILayout.EndFoldoutHeaderGroup(); 
         
 
-
+        
         serializedObject.ApplyModifiedProperties();
         //levelStatusChecker.jumpHeight = (int)EditorGUILayout.Slider("Jump Height", levelStatusChecker.jumpHeight, 1f, 5f);
     }
-
-    /*    public override VisualElement CreateInspectorGUI()
-        {
-            VisualElement inspector = new VisualElement();
-            LevelStatusChecker levelStatusChecker = (LevelStatusChecker)target;
-            inspector.Add(base.CreateInspectorGUI());
-            //inspector.Add(new Label("Bingus"));
-
-            // Visible in UI
-            SerializedProperty startingPoint = serializedObject.FindProperty("startingPoint");
-            SerializedProperty endingPoint = serializedObject.FindProperty("endingPoint");
-            SerializedProperty jumpHeight = serializedObject.FindProperty("jumpHeight");
-            SerializedProperty boxHeight = serializedObject.FindProperty("boxHeight");
-            SerializedProperty numberOfBoxes = serializedObject.FindProperty("numberOfBoxes");
-            SerializedProperty boxPrefab = serializedObject.FindProperty("boxPrefab");
-            SerializedProperty helperObstacles = serializedObject.FindProperty("helperObstacles");
-            SerializedProperty obstacleHeight = serializedObject.FindProperty("obstacleHeight");
-
-            // Not Visible in UI
-            SerializedProperty totalBoxHeight = serializedObject.FindProperty("totalBoxHeight");
-            SerializedProperty totalReachHeight = serializedObject.FindProperty("totalReachHeight");
-            SerializedProperty startToEndDistance = serializedObject.FindProperty("startToEndDistance");
-            SerializedProperty spawnPoint = serializedObject.FindProperty("spawnPoint");
-
-
-            inspector.Add(new PropertyField(startingPoint));
-            inspector.Add(new PropertyField(endingPoint));
-            inspector.Add(new PropertyField(jumpHeight));
-            inspector.Add(new Label("Boxes"));
-            inspector.Add(new PropertyField(boxHeight));
-            inspector.Add(new PropertyField(numberOfBoxes));
-            inspector.Add(new PropertyField(boxPrefab));
-            inspector.Add(new Label("Level Features"));
-            inspector.Add(new PropertyField(helperObstacles));
-            inspector.Add(new PropertyField(obstacleHeight));
-
-            return inspector;
-
-        }*/
-
-
-
-
 }

@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Collectable
   - EndPlatform
+  - NoHelpObstacle
+  - HelpObstacle
+  - Boxes
   layers:
   - Default
   - TransparentFX

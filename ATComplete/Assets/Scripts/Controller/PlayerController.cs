@@ -117,6 +117,7 @@ public class PlayerController: MonoBehaviour
         ApplyFinalMovements();
         PhysicsPickup();
         SpawnPrefab();
+        CollectBoxes();
 
         //DebugStuff();
 
@@ -245,14 +246,17 @@ public class PlayerController: MonoBehaviour
 
     private void SpawnPrefab()
     {
-        //Debug.Log("Spawn Prefab Method");
-        //RaycastHit hit;
-        //Ray ray = playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0.5f));
-
         if (controls.Player.Y.triggered)
         {
             levelChecker.SpawnPrefab();
-            //if (Physics.Raycast(ray, out hit, 100.0f)){}
+        }
+    }
+
+    private void CollectBoxes()
+    {
+        if (controls.Player.Interact.triggered)
+        {
+            levelChecker.CollectBoxes();
         }
     }
 
