@@ -4,28 +4,7 @@ using UnityEngine;
 
 [ExecuteInEditMode]
 public class LevelStatusChecker : MonoBehaviour
-{
-    // Game idea for mechanic
-    // Player has a certain number of boxes to stack and climb to escape level
-    // Boxes have set size, if distance away from goal area (add collision box by exit) is greater than boxes * box height then display issue
-    
-    // Issues:
-    //      Vertical moving - horizontal moving *should be* fine as Y position doesn't change -side-lined 
-    //      Horizontal moving - make work
-    //          - Put movement in seperate script on platform then fetch starting point that from here?
-    //      Issue with stacking - need to pyramid for tall heights but how is that included in reach?
-    //      Add Pop-ups when can't do something or win
-    //      Add controls on screen - done 
-    //      Add button to reset boxes - make that a mechanic - done
-    //      Make it more colourful?
-
-    // For Next Week
-    //  -   Movement
-    //  -   Make it more dynamic with platform spacing
-    //  -   Use or number value to set distance between platforms in AtoBCheck
-    //  -   Get distance to next platform from platform object
-
-    
+{  
     
     public int jumpHeight;
     [SerializeField] private int boxHeight;
@@ -57,7 +36,6 @@ public class LevelStatusChecker : MonoBehaviour
     [SerializeField] private GameObject endPlatform;
 
     private MovePlatform[] movePlatf;
-    [SerializeField] private int platformSpaceDistance;
 
     private void Awake()
     {
@@ -74,7 +52,6 @@ public class LevelStatusChecker : MonoBehaviour
         startPlatform = startEndPointsList[0];
         endPlatform = startEndPointsList[startEndPointsList.Length -1];
         meshMaterial = endPlatform.GetComponentInChildren<MeshRenderer>().sharedMaterial;
-        //meshMaterial2 = startPlatform.GetComponentInChildren<MeshRenderer>().sharedMaterial;
 
     }
 
@@ -122,11 +99,10 @@ public class LevelStatusChecker : MonoBehaviour
         for (int i = 0; i < startEndPointsList.Length; i++)
         {
             if (i == 0) { i = 1; }
-            //movePlatf = startEndPointsList[i].GetComponents<MovePlatform>();
-            if (!AtoBDistanceCheck(startEndPointsList[i], startEndPointsList[i - 1], platformSpaceDistance /*movePlatf[i].distToNextPlatform*/))
+
+            if (!AtoB2(startEndPointsList[i].GetComponent<MovePlatform>().GetCenterPos(), startEndPointsList[i - 1].GetComponent<MovePlatform>().GetCenterPos(), startEndPointsList[i - 1].GetComponent<MovePlatform>().GetDistanceToNext()))
             {
-                Debug.Log("Check " + startEndPointsList[i] + " ");
-                //Debug.Log("distToNextPlatform " + movePlatf[i].distToNextPlatform + " ");
+                Debug.Log("Distance Between: " + startEndPointsList[i] + " and: " + startEndPointsList[i - 1] + " too far");
                 levelPossible = false;
                 return false;
             }
@@ -135,47 +111,6 @@ public class LevelStatusChecker : MonoBehaviour
         levelPossible = true;
         return true;
 
-        /*if (!AtoBDistanceCheck(startEndPointsList[1], startEndPointsList[0], true))
-        {
-            //Debug.Log("Can't Reach 1st Platform");
-            levelPossible = false;
-            return false;
-        }
-        if (!AtoBDistanceCheck(startEndPointsList[2], startEndPointsList[1], false))
-        {
-            //Debug.Log("Can't Reach 2nd Platform");
-            levelPossible = false;
-            return false;
-        }
-        if (!AtoBDistanceCheck(startEndPointsList[3], startEndPointsList[2], false))
-        {
-            //Debug.Log("Can't Reach 3rd Platform");
-            levelPossible = false;
-            return false;
-        }
-        if (!AtoBDistanceCheck(startEndPointsList[4], startEndPointsList[3], false))
-        {
-            //Debug.Log("Can't Reach 4th Platform");
-            levelPossible = false;
-            return false;
-        }
-        if (!AtoBDistanceCheck(startEndPointsList[5], startEndPointsList[4], false))
-        {
-            //Debug.Log("Can't Reach 5th Platform");
-            levelPossible = false;
-            return false;
-        }*/
-
-
-        /*if (startToEndDistance <= totalReachHeight) //|| minPlatformHeight <= totalReachHeight)
-        {
-            levelPossible = true;
-            return true;
-        }
-        else
-        {
-            
-        }*/
     }
 
     private void LevelChecks()
@@ -191,28 +126,17 @@ public class LevelStatusChecker : MonoBehaviour
         }
     }
 
-    private bool AtoBDistanceCheck(GameObject gObj1, GameObject gObj2, int distToNext)
-    {   // Compares distance between platforms, addedheights check is to include boxes and helper obstacle height instead of just jump height
-        //float distance;
+    private bool AtoB2(Vector3 pos1, Vector3 pos2, int dist)
+    {
         
-/*        if (addedHeights)
-        {
-            distance = totalReachHeight;
-        }
-        else
-        {
-            distance = jumpHeight * 1.6f; // jump distance/height
-        }*/
-
-        
-
-        if (Vector3.Distance(gObj1.transform.position, gObj2.transform.position) < distToNext)
+        if (Vector3.Distance(pos1, pos2) < dist)
         {
             levelPossible = true;
             return true;
         }
         else
         {
+            print("Problem Distance: " + Vector3.Distance(pos1, pos2));
             levelPossible = false;
             return false;
         }

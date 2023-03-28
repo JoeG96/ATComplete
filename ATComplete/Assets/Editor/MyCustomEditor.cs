@@ -62,7 +62,6 @@ public class MyCustomEditor : Editor
         startPlatform = serializedObject.FindProperty("startPlatform");
         endPlatform = serializedObject.FindProperty("endPlatform");
 
-        platformSpaceDistance = serializedObject.FindProperty("platformSpaceDistance");
     }
 
     public override void OnInspectorGUI()
@@ -89,7 +88,6 @@ public class MyCustomEditor : Editor
         EditorGUILayout.EndFoldoutHeaderGroup();
 
         EditorGUILayout.PropertyField(startEndPointsList);
-        EditorGUILayout.PropertyField(platformSpaceDistance);
 
         EditorGUILayout.LabelField(" Heights ", style,GUILayout.ExpandWidth(true));
         EditorGUILayout.PropertyField(jumpHeight);
@@ -119,10 +117,6 @@ public class MyCustomEditor : Editor
             { levelStatusChecker.SetToExactBoxes(); }
         }
         EditorGUILayout.EndFoldoutHeaderGroup(); 
-        
-
-        
         serializedObject.ApplyModifiedProperties();
-        //levelStatusChecker.jumpHeight = (int)EditorGUILayout.Slider("Jump Height", levelStatusChecker.jumpHeight, 1f, 5f);
     }
 }

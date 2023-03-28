@@ -33,6 +33,7 @@ public class PlatformEditorScript : Editor
     SerializedProperty platformPointA;
     SerializedProperty platformPointB;
     SerializedProperty platformMoveSpeed;
+    SerializedProperty distanceToNextPlatform;
 
     bool verticalMoveGroup, horizontalMoveGroup, functionsGroup = false;
     #endregion
@@ -64,6 +65,7 @@ public class PlatformEditorScript : Editor
         platformPointA = serializedObject.FindProperty("platformPointA");
         platformPointB = serializedObject.FindProperty("platformPointB");
         platformMoveSpeed = serializedObject.FindProperty("platformMoveSpeed");
+        distanceToNextPlatform = serializedObject.FindProperty("distanceToNextPlatform");
 
     }
 
@@ -79,41 +81,14 @@ public class PlatformEditorScript : Editor
         levelStyle.normal.textColor = Color.red;
 
         MovePlatform movePlatform = (MovePlatform)target;
-
-        //EditorGUILayout.PropertyField(levelPossible);
         
         EditorGUILayout.PropertyField(platformStartPos);
         EditorGUILayout.PropertyField(platformPointA);
         EditorGUILayout.PropertyField(platformPointB);
         EditorGUILayout.PropertyField(platformMoveSpeed);
         EditorGUILayout.PropertyField(isMoving);
+        EditorGUILayout.PropertyField(distanceToNextPlatform);
         
-
-/*        EditorGUILayout.LabelField(" Horizontal ", style, GUILayout.ExpandWidth(true));
-        horizontalMoveGroup = EditorGUILayout.BeginFoldoutHeaderGroup(horizontalMoveGroup, "Horizontal Movement");
-        if (horizontalMoveGroup)
-        {
-            EditorGUILayout.PropertyField(isMovingH);
-            EditorGUILayout.PropertyField(minPlatformXValue);
-            EditorGUILayout.PropertyField(maxPlatformXValue);
-        }
-        EditorGUILayout.EndFoldoutHeaderGroup();
-
-        EditorGUILayout.LabelField(" Vertical ", style, GUILayout.ExpandWidth(true));
-        verticalMoveGroup = EditorGUILayout.BeginFoldoutHeaderGroup(verticalMoveGroup, "Vertical Movement");
-        if (verticalMoveGroup)
-        {
-            EditorGUILayout.PropertyField(isMovingV);
-            EditorGUILayout.PropertyField(minPlatformHeight);
-            EditorGUILayout.PropertyField(maxPlatformHeight);
-        }
-        EditorGUILayout.EndFoldoutHeaderGroup();
-
-        EditorGUILayout.LabelField(" Extra ", style, GUILayout.ExpandWidth(true));
-        EditorGUILayout.PropertyField(startPlatformHeight);*/
-
-
-
         functionsGroup = EditorGUILayout.BeginFoldoutHeaderGroup(functionsGroup, "Functions");
         if (functionsGroup)
         {
@@ -128,37 +103,6 @@ public class PlatformEditorScript : Editor
         }
         EditorGUILayout.EndFoldoutHeaderGroup();
 
-        /*        platformsGroup = EditorGUILayout.BeginFoldoutHeaderGroup(platformsGroup, "Platforms");
-                if (platformsGroup)
-                {
-                    EditorGUILayout.PropertyField(startPlatform);
-                    EditorGUILayout.PropertyField(endPlatform);
-                }
-                EditorGUILayout.EndFoldoutHeaderGroup();
-
-                EditorGUILayout.PropertyField(startEndPointsList);
-                EditorGUILayout.PropertyField(platformSpaceDistance);
-
-                EditorGUILayout.LabelField(" Heights ", style,GUILayout.ExpandWidth(true));
-                EditorGUILayout.PropertyField(jumpHeight);
-                EditorGUILayout.PropertyField(boxHeight);
-                EditorGUILayout.PropertyField(totalReachHeight);
-
-                EditorGUILayout.PropertyField(numberOfBoxes);
-                EditorGUILayout.PropertyField(boxPrefab);
-
-                EditorGUILayout.LabelField(" Obstacles ", style, GUILayout.ExpandWidth(true));
-                EditorGUILayout.PropertyField(helperObstacles);
-                EditorGUILayout.PropertyField(noHelpObstacles);
-                EditorGUILayout.PropertyField(obstacleHeight);
-                EditorGUILayout.PropertyField(noHelpObstacleHeight);
-
-
-                 */
-
-
-
         serializedObject.ApplyModifiedProperties();
-        //levelStatusChecker.jumpHeight = (int)EditorGUILayout.Slider("Jump Height", levelStatusChecker.jumpHeight, 1f, 5f);
     }
 }

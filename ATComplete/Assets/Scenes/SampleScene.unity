@@ -347,7 +347,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 93225771}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -22.73, y: 28, z: 10.62}
+  m_LocalPosition: {x: -27, y: 22.07, z: 13.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -377,13 +377,14 @@ MonoBehaviour:
   startPlatformXValue: 0
   minPlatformXValue: 0
   maxPlatformXValue: 0
-  maxPlatformHeightVector: {x: -22.73, y: 0, z: 10.62}
-  minPlatformHeightVector: {x: -22.73, y: 0, z: 10.62}
+  maxPlatformHeightVector: {x: -27, y: 0, z: 13.05}
+  minPlatformHeightVector: {x: -27, y: 0, z: 13.05}
   platformMovingSpeed: 0
-  platformStartPos: {x: 0, y: 0, z: 0}
+  platformStartPos: {x: -27, y: 22.07, z: 13.05}
   platformPointA: {x: 0, y: 0, z: 0}
   platformPointB: {x: 0, y: 0, z: 0}
   platformMoveSpeed: 0
+  distanceToNextPlatform: 20
 --- !u!1 &95064639
 GameObject:
   m_ObjectHideFlags: 0
@@ -421,7 +422,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh24548
+  m_Name: pb_Mesh24546
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1092,7 +1093,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330826763}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -27.34, y: 0, z: 0}
+  m_LocalPosition: {x: -27, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1122,13 +1123,14 @@ MonoBehaviour:
   startPlatformXValue: 0
   minPlatformXValue: 0
   maxPlatformXValue: 0
-  maxPlatformHeightVector: {x: -27.34, y: 0, z: 0}
-  minPlatformHeightVector: {x: -27.34, y: 0, z: 0}
+  maxPlatformHeightVector: {x: -27, y: 0, z: 0}
+  minPlatformHeightVector: {x: -27, y: 0, z: 0}
   platformMovingSpeed: 0
-  platformStartPos: {x: 0, y: 0, z: 0}
+  platformStartPos: {x: -27, y: 0, z: 0}
   platformPointA: {x: 0, y: 0, z: 0}
   platformPointB: {x: 0, y: 0, z: 0}
   platformMoveSpeed: 0
+  distanceToNextPlatform: 20
 --- !u!1 &441319482
 GameObject:
   m_ObjectHideFlags: 0
@@ -1173,7 +1175,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh24562
+  m_Name: pb_Mesh24560
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2376,7 +2378,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh24486
+  m_Name: pb_Mesh24484
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2559,7 +2561,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 680540272}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -26.91, y: 22.06, z: 5.1}
+  m_LocalPosition: {x: -27, y: 16.86, z: 4.62}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2589,13 +2591,14 @@ MonoBehaviour:
   startPlatformXValue: 0
   minPlatformXValue: 0
   maxPlatformXValue: 0
-  maxPlatformHeightVector: {x: -26.91, y: 0, z: 5.1}
-  minPlatformHeightVector: {x: -26.91, y: 0, z: 5.1}
+  maxPlatformHeightVector: {x: -27, y: 0, z: 4.62}
+  minPlatformHeightVector: {x: -27, y: 0, z: 4.62}
   platformMovingSpeed: 0
-  platformStartPos: {x: 0, y: 0, z: 0}
+  platformStartPos: {x: -27, y: 16.86, z: 4.62}
   platformPointA: {x: 0, y: 0, z: 0}
   platformPointB: {x: 0, y: 0, z: 0}
   platformMoveSpeed: 0
+  distanceToNextPlatform: 20
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -2715,7 +2718,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 846599147}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -26.88, y: 24.529999, z: 9.86}
+  m_LocalPosition: {x: -27, y: 17.529999, z: 9.86}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2745,13 +2748,14 @@ MonoBehaviour:
   startPlatformXValue: 0
   minPlatformXValue: 0
   maxPlatformXValue: 0
-  maxPlatformHeightVector: {x: -26.88, y: 0, z: 9.86}
-  minPlatformHeightVector: {x: -26.88, y: 0, z: 9.86}
+  maxPlatformHeightVector: {x: -27, y: 0, z: 9.86}
+  minPlatformHeightVector: {x: -27, y: 0, z: 9.86}
   platformMovingSpeed: 0
-  platformStartPos: {x: 0, y: 0, z: 0}
+  platformStartPos: {x: -27, y: 17.529999, z: 9.86}
   platformPointA: {x: 0, y: 0, z: 0}
   platformPointB: {x: 0, y: 0, z: 0}
   platformMoveSpeed: 0
+  distanceToNextPlatform: 20
 --- !u!43 &879465931
 Mesh:
   m_ObjectHideFlags: 0
@@ -3086,7 +3090,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh24504
+  m_Name: pb_Mesh24502
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3250,7 +3254,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh24524
+  m_Name: pb_Mesh24522
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4622,7 +4626,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1406869198}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -26.96, y: 19.44, z: -0.39}
+  m_LocalPosition: {x: -27, y: 14.18, z: -0.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4652,13 +4656,14 @@ MonoBehaviour:
   startPlatformXValue: 0
   minPlatformXValue: 0
   maxPlatformXValue: 0
-  maxPlatformHeightVector: {x: -26.96, y: 0, z: -0.39}
-  minPlatformHeightVector: {x: -26.96, y: 0, z: -0.39}
+  maxPlatformHeightVector: {x: -27, y: 0, z: -0.7}
+  minPlatformHeightVector: {x: -27, y: 0, z: -0.7}
   platformMovingSpeed: 0
-  platformStartPos: {x: 0, y: 0, z: 0}
+  platformStartPos: {x: -27, y: 14.18, z: -0.7}
   platformPointA: {x: 0, y: 0, z: 0}
   platformPointB: {x: 0, y: 0, z: 0}
   platformMoveSpeed: 0
+  distanceToNextPlatform: 20
 --- !u!1 &1419600986
 GameObject:
   m_ObjectHideFlags: 0
@@ -5084,7 +5089,7 @@ MonoBehaviour:
   boxHeight: 2
   totalBoxHeight: 10
   totalReachHeight: 20
-  startToEndDistance: 32.86
+  startToEndDistance: 30.23
   numberOfBoxes: 5
   boxPrefab: {fileID: 5486173723849544996, guid: 674274f02e4fa054d93297910825bcc9, type: 3}
   spawnPoint: {fileID: 95064640}
@@ -5109,9 +5114,9 @@ MonoBehaviour:
   - {fileID: 846599147}
   - {fileID: 93225771}
   - {fileID: 1737894103}
+  - {fileID: 1766036862}
   startPlatform: {fileID: 330826763}
-  endPlatform: {fileID: 1737894103}
-  platformSpaceDistance: 20
+  endPlatform: {fileID: 1766036862}
 --- !u!1 &1496896111
 GameObject:
   m_ObjectHideFlags: 0
@@ -6317,7 +6322,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1737894103}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -27.04, y: 32.86, z: 7.21}
+  m_LocalPosition: {x: -27, y: 23.75, z: 7.21}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6347,13 +6352,14 @@ MonoBehaviour:
   startPlatformXValue: 0
   minPlatformXValue: 0
   maxPlatformXValue: 0
-  maxPlatformHeightVector: {x: -27.04, y: 0, z: 7.21}
-  minPlatformHeightVector: {x: -27.04, y: 0, z: 7.21}
+  maxPlatformHeightVector: {x: -27, y: 0, z: 7.21}
+  minPlatformHeightVector: {x: -27, y: 0, z: 7.21}
   platformMovingSpeed: 0
-  platformStartPos: {x: 0, y: 0, z: 0}
+  platformStartPos: {x: -27, y: 23.75, z: 7.21}
   platformPointA: {x: 0, y: 0, z: 0}
   platformPointB: {x: 0, y: 0, z: 0}
   platformMoveSpeed: 0
+  distanceToNextPlatform: 10
 --- !u!1 &1766036862
 GameObject:
   m_ObjectHideFlags: 0
@@ -6365,7 +6371,7 @@ GameObject:
   - component: {fileID: 1766036863}
   - component: {fileID: 1766036864}
   m_Layer: 0
-  m_Name: EndPoint3 (1)
+  m_Name: StartPoint4
   m_TagString: Untagged
   m_Icon: {fileID: 2800000, guid: f82dfc5fc3c5a8f4080a3550427019c8, type: 3}
   m_NavMeshLayer: 0
@@ -6379,7 +6385,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1766036862}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -26.78, y: 23.61, z: -23.800426}
+  m_LocalPosition: {x: -27, y: 30.23, z: -8.318489}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6409,13 +6415,14 @@ MonoBehaviour:
   startPlatformXValue: 0
   minPlatformXValue: 0
   maxPlatformXValue: 0
-  maxPlatformHeightVector: {x: -26.78, y: 50, z: -3.61}
-  minPlatformHeightVector: {x: -26.78, y: 10, z: -3.61}
+  maxPlatformHeightVector: {x: -27, y: 50, z: 3.3079686}
+  minPlatformHeightVector: {x: -27, y: 10, z: 3.3079686}
   platformMovingSpeed: 0
-  platformStartPos: {x: -26.78, y: 23.61, z: -14.51}
-  platformPointA: {x: -26.78, y: 23.61, z: -27.4}
-  platformPointB: {x: -26.78, y: 23.61, z: -3.61}
+  platformStartPos: {x: -27, y: 30.23, z: 1.39}
+  platformPointA: {x: -27, y: 30.23, z: 15.42}
+  platformPointB: {x: -27, y: 30.23, z: -16.26}
   platformMoveSpeed: 1
+  distanceToNextPlatform: 0
 --- !u!1001 &1886659139
 PrefabInstance:
   m_ObjectHideFlags: 0

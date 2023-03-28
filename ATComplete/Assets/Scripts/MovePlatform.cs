@@ -30,6 +30,7 @@ public class MovePlatform : MonoBehaviour
     [SerializeField] Vector3 platformPointA;
     [SerializeField] Vector3 platformPointB;
     [SerializeField] float platformMoveSpeed;
+    [SerializeField] int distanceToNextPlatform;
     
 
     private void Awake()
@@ -64,6 +65,11 @@ public class MovePlatform : MonoBehaviour
     public Vector3 GetCenterPos()
     {
         return platformStartPos;
+    }
+
+    public int GetDistanceToNext()
+    {
+        return distanceToNextPlatform;
     }
 
     public void SetCenterPoint()
